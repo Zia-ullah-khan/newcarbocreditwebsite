@@ -7,16 +7,21 @@ import Navigation from '@/components/ui/Navigation';
 import Footer from '@/components/ui/Footer';
 import { Code, Copy, Terminal, CheckCircle2, Globe, BookOpen } from 'lucide-react';
 
-const DocumentationPage = () => {
-  const [copySuccess, setCopySuccess] = useState('');
+interface CodeBlockProps {
+  code: string;
+  language?: string;
+}
 
-  const copyToClipboard = (text) => {
+const DocumentationPage: React.FC = () => {
+  const [copySuccess, setCopySuccess] = useState<string>('');
+
+  const copyToClipboard = (text: string): void => {
     navigator.clipboard.writeText(text);
     setCopySuccess(text);
     setTimeout(() => setCopySuccess(''), 2000);
   };
 
-  const CodeBlock = ({ code, language = 'bash' }) => (
+  const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = 'bash' }) => (
     <div className="relative bg-gray-900 rounded-md p-4 my-2">
       <div className="absolute right-2 top-2">
         <Button
@@ -32,7 +37,7 @@ const DocumentationPage = () => {
           )}
         </Button>
       </div>
-      <pre className="text-gray-100 overflow-x-auto">
+      <pre className={`text-gray-100 overflow-x-auto language-${language}`}>
         <code>{code}</code>
       </pre>
     </div>
@@ -50,7 +55,7 @@ const DocumentationPage = () => {
               API Documentation
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
-              Empowering sustainable development through API integration. Build innovative solutions with CarboCredit's comprehensive API.
+              Empowering sustainable development through API integration. Build innovative solutions with CarboCredit&apos;s comprehensive API.
             </p>
           </div>
         </div>
@@ -143,7 +148,7 @@ const DocumentationPage = () => {
                     <ul className="space-y-2 text-gray-600">
                       <li className="flex items-center">
                         <span className="text-green-600 font-medium mr-2">200 OK:</span>
-                        Returns the project's information
+                        Returns the project&apos;s information
                       </li>
                       <li className="flex items-center">
                         <span className="text-red-600 font-medium mr-2">404 Not Found:</span>

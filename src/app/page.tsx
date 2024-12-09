@@ -1,18 +1,26 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Leaf, Globe, BarChart3, Users, Menu, X } from 'lucide-react';
+import { ArrowRight, Leaf, Globe, BarChart3, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import Navigation from '@/components/ui/Navigation'
+import Navigation from '@/components/ui/Navigation';
 import Footer from '@/components/ui/Footer';
 
-const HomePage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+interface NavItem {
+  label: string;
+  href: string;
+}
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+const HomePage: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const navItems: NavItem[] = [
+    { label: 'Home', href: '#' },
+    { label: 'Features', href: '#features' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -33,10 +41,8 @@ const HomePage = () => {
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" >
-                <a href='/about'>
+              <Button variant="outline">
                 Learn More
-                </a>
               </Button>
             </div>
           </div>

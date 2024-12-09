@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, FormEvent, ChangeEvent  } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,55 +8,60 @@ import { Textarea } from '@/components/ui/textarea';
 import Navigation from '@/components/ui/Navigation';
 import Footer from '@/components/ui/Footer';
 import { Mail, Phone, MapPin, RefreshCw } from 'lucide-react';
-
-const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    captchaInput: ''
-  });
-  
-  // Simple captcha state
-  const [captcha, setCaptcha] = useState(generateCaptcha());
-  
-  function generateCaptcha() {
-    return Math.random().toString(36).slice(2, 8).toUpperCase();
+interface FormData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    captchaInput: string;
   }
   
-  const refreshCaptcha = () => {
-    setCaptcha(generateCaptcha());
-    setFormData(prev => ({ ...prev, captchaInput: '' }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.captchaInput === captcha) {
-      // Handle form submission
-      console.log('Form submitted:', formData);
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        captchaInput: ''
-      });
-      refreshCaptcha();
-    } else {
-      alert('Incorrect captcha. Please try again.');
+  const ContactPage = () => {
+    const [formData, setFormData] = useState<FormData>({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      captchaInput: ''
+    });
+    
+    const [captcha, setCaptcha] = useState<string>(generateCaptcha());
+    
+    function generateCaptcha(): string {
+      return Math.random().toString(36).slice(2, 8).toUpperCase();
     }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
+    
+    const refreshCaptcha = (): void => {
+      setCaptcha(generateCaptcha());
+      setFormData(prev => ({ ...prev, captchaInput: '' }));
+    };
+  
+    const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+      e.preventDefault();
+      if (formData.captchaInput === captcha) {
+        // Handle form submission
+        console.log('Form submitted:', formData);
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+          captchaInput: ''
+        });
+        refreshCaptcha();
+      } else {
+        alert('Incorrect captcha. Please try again.');
+      }
+    };
+  
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+      const { name, value } = e.target;
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    };
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
