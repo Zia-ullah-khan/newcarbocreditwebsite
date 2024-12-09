@@ -92,21 +92,21 @@ interface FormData {
                     <Mail className="h-6 w-6 text-green-600 mt-1" />
                     <div>
                       <h3 className="font-semibold">Email</h3>
-                      <p className="text-gray-600">support@carbocredit.com</p>
+                      <p className="text-gray-600">support@carbocredit.org</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
                     <Phone className="h-6 w-6 text-green-600 mt-1" />
                     <div>
                       <h3 className="font-semibold">Phone</h3>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                      <p className="text-gray-600">+1 (318) 690-1669</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
                     <MapPin className="h-6 w-6 text-green-600 mt-1" />
                     <div>
                       <h3 className="font-semibold">Address</h3>
-                      <p className="text-gray-600">123 Green Street<br />San Francisco, CA 94105</p>
+                      <p className="text-gray-600">3327 Woodland Phlox St<br />Rockville, MD 20852</p>
                     </div>
                   </div>
                 </CardContent>
