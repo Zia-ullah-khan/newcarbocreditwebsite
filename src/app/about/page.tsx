@@ -46,6 +46,24 @@ const AboutPage = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">Our Core Values</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <Card className="p-6">
+              <CardContent className="space-y-4">
+                <Target className="h-12 w-12 text-green-600" />
+                <h3 className="text-xl font-semibold">AI-Driven Verification</h3>
+                <p className="text-gray-600">
+                  We use AI to dynamically and acuratly predict and verify carbon credits and other metrics.
+                </p>
+              </CardContent>
+            </Card>
+          <Card className="p-6">
+              <CardContent className="space-y-4">
+                <Target className="h-12 w-12 text-green-600" />
+                <h3 className="text-xl font-semibold">Blockchain-Driven Security</h3>
+                <p className="text-gray-600">
+                  We use Blockchain for its transparency and security.
+                </p>
+              </CardContent>
+            </Card>
             <Card className="p-6">
               <CardContent className="space-y-4">
                 <Target className="h-12 w-12 text-green-600" />
