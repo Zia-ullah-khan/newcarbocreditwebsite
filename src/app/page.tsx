@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Leaf, Globe, BarChart3, Users } from 'lucide-react';
+import { ArrowRight, Leaf, Globe, BarChart3, Users, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Navigation from '@/components/ui/Navigation';
